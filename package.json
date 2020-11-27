@@ -2,9 +2,10 @@
   "scripts": {
     "dev": "goldpage dev",
     "deploy": "yarn prod:build && yarn prod:deploy",
-    "prod:build": "yarn prod:build:clean && yarn prod:build:goldpage",
+    "prod:build": "yarn prod:build:clean && yarn prod:build:goldpage && yarn prod:build:static",
     "prod:build:clean": "rm -rf .build/",
     "prod:build:goldpage": "goldpage build",
+    "prod:build:static": "mkdir -p .build/browser/ && cp -rL static/* .build/browser/",
     "prod:serve": "yarn serve .build/browser/ --listen 3000",
     "prod:deploy": "push-dir --dir=.build/browser/ --branch=gh-pages --cleanup"
   },
